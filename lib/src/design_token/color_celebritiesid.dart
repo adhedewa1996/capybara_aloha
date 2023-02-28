@@ -1,0 +1,41 @@
+import 'dart:ui';
+
+class CelebritiesIdColors {
+  static const pinkMain = Color(0xfffc4775);
+  static const blueMist = Color(0xffd8dfee);
+  static const teal = Color(0xff009672);
+  static const yellow = Color(0xfffad703);
+  static const whiteSmokke = Color(0xfff5f5f5);
+  static const greyChartSection = Color(0xffdcdcdc);
+  static const greyChartLabel = Color(0xffa3a4a7);
+  static const blackChartLabel = Color(0xff212121);
+  static const greyDescLabel = Color(0xffb8b0b0);
+  static const greyDevider = Color(0xfff5f5f5);
+  static const greyCard = Color(0xfff2f2f2);
+  static const greyFlatButton = Color(0xfff0f0f0);
+  static const greyShadow = Color(0x40a1a1a1);
+  static const greyOutlineButton = Color(0xff979797);
+  static const sunFlowerYellow = Color(0xfffad703);
+  static const paleYellow = Color(0xdaf9e9a0);
+  static const disableCard = Color(0x33979797);
+  static const greyBackground = Color(0xff3e3e3e);
+  static const headlineBlack = Color(0xff0e031f);
+  static const newsHeadlineBackground = Color(0xfff4f4f4);
+  static const bodyBlack = Color(0xff212121);
+  static const fieldText = Color(0xff525252);
+  static const blackCaption = Color(0xff575658);
+  static const whiteBorderInput = Color(0xffe6e6eb);
+  static const whiteBackgroundInput = Color(0xfffcfcfc);
+  static const borderCardWhite = Color(0xffe9e8e8);
+  static const dividerPink = Color(0xfffceef5);
+  static const iconTile = Color(0xff009688);
+  static const buttonSnow = Color(0xfffbfbfb);
+  static const whiteCard = Color(0xfff4f4f4);
+  static const sidebordErgrey = Color(0xffd0d0d0);
+  static const yellowCard = Color(0xfffff3a5);
+  static const pinkText = Color(0xffe80f8a);
+  static const greyText = Color(0xffbfbfbf);
+  static const dashLinePink = Color(0xfff7acb7);
+  static const greyTextBackground = Color(0xffcc2121);
+  static const greenSucces = Color(0x33009672);
+}

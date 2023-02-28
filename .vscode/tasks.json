@@ -1,0 +1,34 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "[DEV] build apk arm64",
+            "type": "shell",
+            "command": "flutter build apk --release --target-platform android-arm64 --flavor dev",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "[PROD] build apk arm64",
+            "type": "shell",
+            "command": "flutter build apk --release --target-platform android-arm64 --flavor prod",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "[PROD] build appbundle",
+            "type": "shell",
+            "command": "flutter build appbundle--flavor prod",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
