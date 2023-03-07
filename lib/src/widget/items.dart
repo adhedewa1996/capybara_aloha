@@ -2,27 +2,156 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../constants.dart';
+import '../design_token/index.dart';
 
 mixin Items {
-  static Widget market(String title) {
+  static Widget marketWithIndicator({
+    required String indexCode,
+    required String last,
+    required String percentage,
+    required String change,
+    required bool isIncrease,
+    ItemAxis itemAxis = ItemAxis.horizontal,
+  }) {
+    if (itemAxis == ItemAxis.horizontal) {
+      return Container(
+        margin: const EdgeInsets.all(CapybaraPadding.small),
+        padding: const EdgeInsets.symmetric(horizontal: CapybaraPadding.small, vertical: CapybaraPadding.medium),
+        width: Get.width * .35,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  indexCode,
+                  style: CapybaraTypographyScale.titleModerateBold,
+                ),
+                Text(last),
+              ],
+            ),
+            indicator(
+              isIncrease: isIncrease,
+              indicatorStyle: IndicatorStyle.second,
+              percentage: percentage,
+              change: change,
+            ),
+          ],
+        ),
+      );
+    }
     return Container(
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.all(8),
-      width: 100,
+      margin: const EdgeInsets.all(CapybaraPadding.small),
+      padding: const EdgeInsets.symmetric(horizontal: CapybaraPadding.extraLarge, vertical: CapybaraPadding.medium),
+      height: Get.height * .15,
+      width: 110,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title),
-          Text(title),
-          Text(title),
-          Text(title),
+          Text(
+            indexCode,
+            style: CapybaraTypographyScale.titleModerateBold,
+          ),
+          Text(last),
+          Row(
+            children: [
+              indicator(
+                isIncrease: isIncrease,
+                indicatorStyle: IndicatorStyle.first,
+              ),
+              const SizedBox(width: CapybaraPadding.small),
+              Text(percentage),
+            ],
+          ),
+          Text(change),
         ],
       ),
     );
   }
 
+  static Widget simpleBox({
+    required String title,
+    required Function() onClick,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        onClick.call();
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          vertical: CapybaraPadding.small,
+          horizontal: CapybaraPadding.medium,
+        ),
+        margin: const EdgeInsets.only(left: CapybaraPadding.small),
+        decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: BorderRadius.circular(
+            CapybaraPadding.verySmall,
+          ),
+        ),
+        child: Text(
+          title,
+          style: CapybaraTypographyScale.titleSmallBold,
+        ),
+      ),
+    );
+  }
+
+  static Widget indicator({
+    required bool isIncrease,
+    required IndicatorStyle indicatorStyle,
+    String? percentage,
+    String? change,
+  }) {
+    String text = '';
+    Color color = Colors.white;
+    Widget? widget;
+
+    switch (indicatorStyle) {
+      case IndicatorStyle.first:
+        if (isIncrease) {
+          text = '▲';
+          color = Colors.green;
+        } else {
+          text = '▼';
+          color = Colors.red;
+        }
+        widget = Text(text, style: TextStyle(color: color));
+        break;
+      case IndicatorStyle.second:
+        widget = Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            indicator(
+              isIncrease: isIncrease,
+              indicatorStyle: IndicatorStyle.first,
+            ),
+            const SizedBox(width: CapybaraPadding.small),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(change!),
+                Text(percentage!),
+              ],
+            ),
+          ],
+        );
+        break;
+    }
+    return widget;
+  }
+
   static Widget news({
+    required String title,
+    required String channelName,
+    required String datetime,
+    required int index,
+    bool showIndex = false,
     ItemAxis itemAxis = ItemAxis.vertical,
     ItemType itemType = ItemType.news,
     double aspectRatio = 3 / 2,
@@ -30,7 +159,7 @@ mixin Items {
   }) {
     if (itemAxis == ItemAxis.horizontal) {
       return Container(
-        margin: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(CapybaraPadding.medium),
         child: Column(
           children: [
             AspectRatio(
@@ -55,13 +184,13 @@ mixin Items {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SizedBox(height: 16),
-                const Text('Lorem ipsum dolor sit amet consectetur pellentesque disasma.'),
+                Text(title),
                 const SizedBox(height: 16),
                 Row(
-                  children: const [
-                    Text('Market News'),
-                    SizedBox(width: 16),
-                    Text('12 Menit yang lalu'),
+                  children: [
+                    Text(channelName),
+                    const SizedBox(width: 16),
+                    Text(datetime),
                   ],
                 )
               ],
@@ -72,54 +201,70 @@ mixin Items {
     }
     return SizedBox(
       width: Get.width,
-      height: 90,
-      child: Row(
-        children: [
-          AspectRatio(
-            aspectRatio: 1 / 1,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(8),
+      height: 100,
+      child: Container(
+        padding: const EdgeInsets.all(CapybaraPadding.medium),
+        child: Row(
+          children: [
+            AspectRatio(
+              aspectRatio: 1 / 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Stack(
+                  children: [
+                    if (itemType == ItemType.video || itemType == ItemType.photo)
+                      Positioned(
+                        top: 8,
+                        left: 8,
+                        child: Icon(icon),
+                      ),
+                    if (showIndex)
+                      Positioned(
+                        bottom: 8,
+                        right: 8,
+                        child: Text(
+                          index.toString(),
+                          style: CapybaraTypographyScale.titleExtraLarge,
+                        ),
+                      )
+                  ],
+                ),
               ),
-              child: Stack(
+            ),
+            Container(
+              width: Get.width * .6,
+              margin: const EdgeInsets.symmetric(horizontal: CapybaraPadding.medium),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (itemType == ItemType.video || itemType == ItemType.photo)
-                    Positioned(
-                      top: 8,
-                      left: 8,
-                      child: Icon(icon),
-                    )
+                  Text(title),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(channelName),
+                      Text(datetime),
+                    ],
+                  )
                 ],
               ),
-            ),
-          ),
-          Container(
-            width: Get.width * .6,
-            margin: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text('Lorem ipsum dolor sit amet consectetur pellentesque disasma.'),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text('Market News'),
-                    Text('12 Menit yang lalu'),
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
 
-  static Widget headline() {
+  static Widget headline({
+    required String title,
+    required String channelName,
+    required String datetime,
+  }) {
     return Container(
       width: Get.width,
-      margin: const EdgeInsets.only(right: 16, left: 16, bottom: 16),
+      padding: const EdgeInsets.all(CapybaraPadding.medium),
       child: AspectRatio(
         aspectRatio: 3 / 2,
         child: Container(
@@ -138,12 +283,12 @@ mixin Items {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Lorem ipsum dolor sit amet consectetur pellentesque disasma.'),
+                      Text(title),
                       Row(
-                        children: const [
-                          Text('Market News'),
-                          SizedBox(width: 16),
-                          Text('12 Menit yang lalu'),
+                        children: [
+                          Text(channelName),
+                          const SizedBox(width: 16),
+                          Text(datetime),
                         ],
                       )
                     ],
@@ -312,30 +457,6 @@ mixin Items {
     );
   }
 
-  static Widget profile(String name) {
-    return AspectRatio(
-      aspectRatio: 5 / 1,
-      child: Container(
-        margin: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            AspectRatio(
-              aspectRatio: 1 / 1,
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey[200],
-                ),
-              ),
-            ),
-            const SizedBox(width: 16),
-            Text(name),
-          ],
-        ),
-      ),
-    );
-  }
-
   static Widget notFound() {
     return Column(
       children: [
@@ -357,6 +478,110 @@ mixin Items {
         ),
         const Text('Maaf konten yang anda cari tidak tersedia')
       ],
+    );
+  }
+
+  static Widget line(String title, bool isSelected) {
+    return Container(
+      height: Get.height * .05,
+      width: Get.width,
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            width: isSelected ? 2.5 : 1,
+            color: isSelected ? Colors.black : Colors.grey[200]!,
+          ),
+        ),
+      ),
+      child: Center(
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget tooth(String title, bool isSelected) {
+    return Container(
+      height: Get.height * .05,
+      margin: const EdgeInsets.only(top: 16),
+      decoration: isSelected
+          ? const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(4),
+                topRight: Radius.circular(4),
+              ),
+            )
+          : null,
+      child: Center(
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget readAlso({
+    required String title,
+    required String urlImage,
+    required String urlImagePlaceholder,
+    required Function() callback,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        callback.call();
+      },
+      child: Container(
+        padding: const EdgeInsets.all(CapybaraPadding.medium),
+        margin: const EdgeInsets.all(CapybaraPadding.medium),
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Baca Juga :'),
+            const SizedBox(height: CapybaraPadding.medium),
+            SizedBox(
+              width: Get.width,
+              height: 75,
+              child: SizedBox(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AspectRatio(
+                      aspectRatio: 1 / 1,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[400],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: Get.width * .55,
+                      margin: const EdgeInsets.symmetric(horizontal: CapybaraPadding.medium),
+                      child: Text(
+                        title,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

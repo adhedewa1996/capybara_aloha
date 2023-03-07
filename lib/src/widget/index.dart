@@ -1,5 +1,10 @@
 export 'images.dart';
 export 'items.dart';
-export 'item_news.dart';
 export 'dividers.dart';
 export 'appbars.dart';
+export 'headers.dart';
+export 'profiles.dart';
+export 'popups.dart';
+export 'tabbars.dart';
+export 'bottom_sheets.dart';
+export 'stickys.dart';
