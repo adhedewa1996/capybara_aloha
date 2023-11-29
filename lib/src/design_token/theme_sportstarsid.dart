@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 import 'color_sportstarsid.dart';
 
@@ -37,53 +37,53 @@ class SportstarsIdTheme {
         borderRadius: BorderRadius.circular(8.0),
       ),
     ),
-    textTheme: GoogleFonts.robotoTextTheme().copyWith(
-      displayLarge: GoogleFonts.roboto(
-        fontWeight: FontWeight.w700,
-        fontSize: ScreenUtil().setSp(18),
-        color: Colors.white,
-      ),
-      displayMedium: GoogleFonts.roboto(
-        fontWeight: FontWeight.w700,
-        fontSize: ScreenUtil().setSp(18.0),
-        color: SportstarsIdColors.blackGrey,
-      ),
-      displaySmall: GoogleFonts.roboto(
-        fontWeight: FontWeight.w500,
-        fontSize: ScreenUtil().setSp(18.0),
-        color: SportstarsIdColors.blackHeading,
-      ),
-      headlineMedium: GoogleFonts.roboto(
-        fontWeight: FontWeight.w600,
-        fontSize: ScreenUtil().setSp(16.0),
-        color: SportstarsIdColors.primaryRed,
-      ),
-      headlineSmall: GoogleFonts.roboto(
-        fontWeight: FontWeight.w700,
-        fontSize: ScreenUtil().setSp(12.0),
-        color: Colors.white,
-      ),
-      titleLarge: GoogleFonts.roboto(
-        fontSize: ScreenUtil().setSp(12),
-        color: SportstarsIdColors.blackGrey,
-      ),
-      bodyLarge: GoogleFonts.roboto(
-        fontSize: ScreenUtil().setSp(14.0),
-        color: Colors.black,
-      ),
-      bodyMedium: GoogleFonts.roboto(
-        fontSize: ScreenUtil().setSp(12.0),
-        color: SportstarsIdColors.blackCaption,
-      ),
-      labelLarge: GoogleFonts.roboto(
-        fontWeight: FontWeight.w600,
-        fontSize: ScreenUtil().setSp(16.0),
-      ),
-      bodySmall: GoogleFonts.roboto(
-        fontWeight: FontWeight.w500,
-        fontSize: ScreenUtil().setSp(12.0),
-      ),
-    ),
+    // textTheme: GoogleFonts.robotoTextTheme().copyWith(
+    //   displayLarge: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w700,
+    //     fontSize: ScreenUtil().setSp(18),
+    //     color: Colors.white,
+    //   ),
+    //   displayMedium: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w700,
+    //     fontSize: ScreenUtil().setSp(18.0),
+    //     color: SportstarsIdColors.blackGrey,
+    //   ),
+    //   displaySmall: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w500,
+    //     fontSize: ScreenUtil().setSp(18.0),
+    //     color: SportstarsIdColors.blackHeading,
+    //   ),
+    //   headlineMedium: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w600,
+    //     fontSize: ScreenUtil().setSp(16.0),
+    //     color: SportstarsIdColors.primaryRed,
+    //   ),
+    //   headlineSmall: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w700,
+    //     fontSize: ScreenUtil().setSp(12.0),
+    //     color: Colors.white,
+    //   ),
+    //   titleLarge: GoogleFonts.roboto(
+    //     fontSize: ScreenUtil().setSp(12),
+    //     color: SportstarsIdColors.blackGrey,
+    //   ),
+    //   bodyLarge: GoogleFonts.roboto(
+    //     fontSize: ScreenUtil().setSp(14.0),
+    //     color: Colors.black,
+    //   ),
+    //   bodyMedium: GoogleFonts.roboto(
+    //     fontSize: ScreenUtil().setSp(12.0),
+    //     color: SportstarsIdColors.blackCaption,
+    //   ),
+    //   labelLarge: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w600,
+    //     fontSize: ScreenUtil().setSp(16.0),
+    //   ),
+    //   bodySmall: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w500,
+    //     fontSize: ScreenUtil().setSp(12.0),
+    //   ),
+    // ),
     primaryTextTheme: const TextTheme(
       titleLarge: TextStyle(
         color: SportstarsIdColors.blueMain,
@@ -125,53 +125,53 @@ class SportstarsIdTheme {
   );
 
   static ThemeData tablet = main.copyWith(
-    textTheme: GoogleFonts.robotoTextTheme().copyWith(
-      displayLarge: GoogleFonts.roboto(
-        fontWeight: FontWeight.w700,
-        fontSize: ScreenUtil().setSp(26.0),
-        color: Colors.white,
-      ),
-      displayMedium: GoogleFonts.roboto(
-        fontWeight: FontWeight.w700,
-        fontSize: ScreenUtil().setSp(26),
-        color: SportstarsIdColors.blackGrey,
-      ),
-      displaySmall: GoogleFonts.roboto(
-        fontWeight: FontWeight.w500,
-        fontSize: ScreenUtil().setSp(26.0),
-        color: SportstarsIdColors.blackHeading,
-      ),
-      headlineMedium: GoogleFonts.roboto(
-        fontWeight: FontWeight.w600,
-        fontSize: ScreenUtil().setSp(20.0),
-        color: SportstarsIdColors.primaryRed,
-      ),
-      headlineSmall: GoogleFonts.roboto(
-        fontWeight: FontWeight.w700,
-        fontSize: ScreenUtil().setSp(16.0),
-        color: Colors.white,
-      ),
-      titleLarge: GoogleFonts.roboto(
-        fontSize: ScreenUtil().setSp(16.0),
-        color: SportstarsIdColors.blackGrey,
-      ),
-      bodyLarge: GoogleFonts.roboto(
-        fontSize: ScreenUtil().setSp(16.0),
-        color: Colors.black,
-      ),
-      bodyMedium: GoogleFonts.roboto(
-        fontSize: ScreenUtil().setSp(16.0),
-        color: SportstarsIdColors.blackCaption,
-      ),
-      labelLarge: GoogleFonts.roboto(
-        fontWeight: FontWeight.w600,
-        fontSize: ScreenUtil().setSp(16.0),
-      ),
-      bodySmall: GoogleFonts.roboto(
-        fontWeight: FontWeight.w500,
-        fontSize: ScreenUtil().setSp(12.0),
-      ),
-    ),
+    // textTheme: GoogleFonts.robotoTextTheme().copyWith(
+    //   displayLarge: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w700,
+    //     fontSize: ScreenUtil().setSp(26.0),
+    //     color: Colors.white,
+    //   ),
+    //   displayMedium: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w700,
+    //     fontSize: ScreenUtil().setSp(26),
+    //     color: SportstarsIdColors.blackGrey,
+    //   ),
+    //   displaySmall: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w500,
+    //     fontSize: ScreenUtil().setSp(26.0),
+    //     color: SportstarsIdColors.blackHeading,
+    //   ),
+    //   headlineMedium: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w600,
+    //     fontSize: ScreenUtil().setSp(20.0),
+    //     color: SportstarsIdColors.primaryRed,
+    //   ),
+    //   headlineSmall: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w700,
+    //     fontSize: ScreenUtil().setSp(16.0),
+    //     color: Colors.white,
+    //   ),
+    //   titleLarge: GoogleFonts.roboto(
+    //     fontSize: ScreenUtil().setSp(16.0),
+    //     color: SportstarsIdColors.blackGrey,
+    //   ),
+    //   bodyLarge: GoogleFonts.roboto(
+    //     fontSize: ScreenUtil().setSp(16.0),
+    //     color: Colors.black,
+    //   ),
+    //   bodyMedium: GoogleFonts.roboto(
+    //     fontSize: ScreenUtil().setSp(16.0),
+    //     color: SportstarsIdColors.blackCaption,
+    //   ),
+    //   labelLarge: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w600,
+    //     fontSize: ScreenUtil().setSp(16.0),
+    //   ),
+    //   bodySmall: GoogleFonts.roboto(
+    //     fontWeight: FontWeight.w500,
+    //     fontSize: ScreenUtil().setSp(12.0),
+    //   ),
+    // ),
     tabBarTheme: main.tabBarTheme.copyWith(
       labelStyle: TextStyle(
         fontSize: ScreenUtil().setSp(16),
